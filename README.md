@@ -7,6 +7,10 @@
 1. run `yarn` or `npm install`
 2. run `yarn start` or `npm start`
 
+#### Deployed version
+
+https://trusting-minsky-d3ff5e.netlify.app/
+
 ### App functionality:
 
 - [x] A user should be able to add and label columns.
