@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function Card({ card, list, onDragStart, onDeleteCard }) {
+export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCard }) {
+  const [updateCardInput, setUpdateCardInput] = useState('');
+
+  const onUpdateCardInput = e => setUpdateCardInput(e.target.value);
+
+  const onSumbitCardUpdate = e => {
+    e.preventDefault();
+    onUpdateCard(card.id, updateCardInput);
+    setUpdateCardInput('');
+  };
   return (
     <div
       className="card"
@@ -13,6 +22,10 @@ export default function Card({ card, list, onDragStart, onDeleteCard }) {
       <>
         {card.title}
         <button onClick={() => onDeleteCard(card.id)}>delete</button>
+        <form onSubmit={onSumbitCardUpdate}>
+          <input type="text" value={updateCardInput} onChange={onUpdateCardInput} />
+          <button type="submit">Update</button>
+        </form>
       </>
     </div>
   );

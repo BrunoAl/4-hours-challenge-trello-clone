@@ -76,6 +76,28 @@ export default function Board() {
     );
   }
 
+  function updateCard(listId, cardId, newTitle) {
+    setBoardState(
+      boardState.map(list => {
+        if (list.id === listId) {
+          return {
+            ...list,
+            cards: list.cards.map(card => {
+              if (card.id === cardId) {
+                return {
+                  ...card,
+                  title: newTitle,
+                };
+              }
+              return card;
+            }),
+          };
+        }
+        return list;
+      }),
+    );
+  }
+
   return (
     <div className="board">
       {boardState.map(list => (
@@ -86,6 +108,7 @@ export default function Board() {
           onDrop={e => onDrop(e, list.id)}
           addCard={addCard}
           deleteCard={deleteCard}
+          updateCard={updateCard}
         />
       ))}
     </div>
