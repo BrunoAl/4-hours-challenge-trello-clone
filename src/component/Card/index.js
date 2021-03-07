@@ -10,6 +10,7 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
     onUpdateCard(card.id, updateCardInput);
     setUpdateCardInput('');
   };
+
   return (
     <div
       className="card"

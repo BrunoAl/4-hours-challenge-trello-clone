@@ -34,7 +34,7 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
       ))}
       <form onSubmit={onAddNewCard}>
         <input type="text" value={addCardInput} onChange={updateCardInput} />
-        <button type="submit">Add</button>
+        <button type="submit">Add card</button>
       </form>
     </div>
   );

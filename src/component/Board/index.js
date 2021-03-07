@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { v4 as uuid } from 'uuid';
 import List from '../List';
 import defaultState from '../../defaultState';
 import './styles.css';
@@ -9,6 +10,7 @@ export default function Board() {
     // Lazy initializer
     () => JSON.parse(window.localStorage.getItem('trellocloneapp')) || defaultState,
   );
+  const [newListInput, setNewListInput] = useState('');
 
   useEffect(() => window.localStorage.setItem('trellocloneapp', JSON.stringify(boardState)), [boardState]);
 
@@ -98,6 +100,19 @@ export default function Board() {
     );
   }
 
+  function addNewList() {
+    setBoardState([
+      ...boardState,
+      {
+        listName: newListInput,
+        id: uuid(),
+        cards: [],
+      },
+    ]);
+  }
+
+  const onUpdateNewListInput = e => setNewListInput(e.target.value);
+
   return (
     <div className="board">
       {boardState.map(list => (
@@ -111,6 +126,10 @@ export default function Board() {
           updateCard={updateCard}
         />
       ))}
+      <form onSubmit={addNewList}>
+        <input type="text" value={newListInput} onChange={onUpdateNewListInput} />
+        <button type="submit">Add list</button>
+      </form>
     </div>
   );
 }
