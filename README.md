@@ -30,4 +30,4 @@ https://trusting-minsky-d3ff5e.netlify.app/
 
 ### Note for the reviewers
 
-- I left code comments to help to review.
+- I left some code comments to help reviewing.
