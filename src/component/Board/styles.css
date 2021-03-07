@@ -19,7 +19,7 @@
 .list {
   box-shadow: 2px 2px 40px 1px gray;
   margin-right: 2.4rem;
-  width: 27.2rem;
+  min-width: 27.2rem;
   font-size: 1.4rem;
   height: fit-content;
 }
@@ -39,6 +39,7 @@
   align-items: center;
   padding-left: 1.2rem;
   box-shadow: 1px 3px 18px gray;
+  cursor: pointer;
 }
 
 .list__add-card {
