@@ -1,11 +1,12 @@
 # 4-hours-challenge-trello-clone
 
-4 hours challenge Trello clone
+This was a challenge to create a Trello clone in 4 hours.
 
 ### Instructions
 
 1. run `yarn` or `npm install`
 2. run `yarn start` or `npm start`
+3. `yarn test` to run the tests.
 
 #### Deployed version
 
@@ -25,7 +26,7 @@ https://trusting-minsky-d3ff5e.netlify.app/
 - Keyboard accessibility.
 - Better styling.
 - Mobile version / Responsive
-- Write tests
+- Write tests and JSDocs
 
 ### Note for the reviewers
 
