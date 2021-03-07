@@ -4,7 +4,7 @@ const DEFAULT_STATE = [
     id: 'to-do',
     cards: [
       { title: 'Groceries', id: 'groceries', description: 'bananas, lettuce' },
-      { title: 'Loundry', id: 'loundry', description: 'white clothes' },
+      { title: 'Laundry', id: 'laundry', description: 'white clothes' },
       { title: 'Sleep', id: 'sleep', description: '8 hours' },
     ],
   },
