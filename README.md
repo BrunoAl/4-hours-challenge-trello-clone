@@ -15,3 +15,12 @@
       drag-and-drop).
 - [x] Do make sure the available interactions are intuitive. In other words, we will be considering usability.
 - [x] Some kind of persistency(LocalStorage or SessionStorage) is encouraged, though not required.
+
+### What would I do if I had more time:
+
+- Keyboard accessibility.
+- Better styling.
+
+### Note for the reviews
+
+- I left code comments to help to review.
