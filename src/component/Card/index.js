@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCard }) {
-  const [updateCardInput, setUpdateCardInput] = useState('');
+  const [updateCardInput, setUpdateCardInput] = useState(card.title);
+  const [isEditInputOpen, setisEditInputOpen] = useState(false);
 
   const onUpdateCardInput = e => setUpdateCardInput(e.target.value);
+  const onOpenEditCard = () => setisEditInputOpen(true);
+  const onCloseEditCard = () => setisEditInputOpen(false);
 
   const onSumbitCardUpdate = e => {
     e.preventDefault();
     onUpdateCard(card.id, updateCardInput);
-    setUpdateCardInput('');
+    onCloseEditCard();
   };
 
   return (
@@ -22,10 +25,20 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
       onDragStart={e => onDragStart(e)}
     >
       <>
-        {card.title}
         <form className="card__update" onSubmit={onSumbitCardUpdate}>
-          <input type="text" value={updateCardInput} onChange={onUpdateCardInput} />
-          <button type="submit">Update</button>
+          {isEditInputOpen ? (
+            <>
+              <input type="text" value={updateCardInput} onChange={onUpdateCardInput} />
+              <button type="submit">Save</button>
+            </>
+          ) : (
+            <div className="card__title-block">
+              <h4 className="card__title">{card.title}</h4>
+              <button className="card__edit" onClick={onOpenEditCard}>
+                Edit
+              </button>
+            </div>
+          )}
         </form>
         <button className="card__delete" onClick={() => onDeleteCard(card.id)}>
           delete
