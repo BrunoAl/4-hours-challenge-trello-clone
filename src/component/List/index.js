@@ -6,7 +6,8 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
   const [addCardInput, setAddCardInput] = useState('');
   const updateCardInput = e => setAddCardInput(e.target.value);
 
-  const onAddNewCard = () => {
+  const onAddNewCard = e => {
+    e.preventDefault();
     addCard(list.id, { title: addCardInput, id: uuid() });
     setAddCardInput('');
   };
@@ -21,10 +22,12 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
       {list.cards.map(card => (
         <Card card={card} list={list} onDragStart={onDragStart} onDeleteCard={onDeleteCard} />
       ))}
-      <div>
+      <form onSubmit={onAddNewCard}>
         <input type="text" value={addCardInput} onChange={updateCardInput} />
-        <button onClick={onAddNewCard}>Add</button>
-      </div>
+        <button type="submit" onClick={onAddNewCard}>
+          Add
+        </button>
+      </form>
     </div>
   );
 }
