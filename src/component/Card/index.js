@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCard }) {
   const [updateCardInput, setUpdateCardInput] = useState('');
@@ -14,7 +15,7 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
   return (
     <div
       className="card"
-      key={card.title}
+      key={card.id}
       // Workaround for drag and drop, I'll try to find a better approach if I have time left in the end.
       id={JSON.stringify({ cardId: card.id, listId: list.id })}
       draggable
@@ -33,3 +34,17 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
     </div>
   );
 }
+
+Card.propTypes = {
+  card: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  list: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  onDragStart: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+  onUpdateCard: PropTypes.func.isRequired,
+};

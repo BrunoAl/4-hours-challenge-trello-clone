@@ -26,7 +26,6 @@ https://trusting-minsky-d3ff5e.netlify.app/
 - Better styling.
 - Mobile version / Responsive
 - Write tests
-- Config JSLint
 
 ### Note for the reviewers
 

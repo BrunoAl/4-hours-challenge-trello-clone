@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Card from '../Card';
+import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
+import Card from '../Card';
 
 export default function List({ list, onDragOver, onDrop, onDragStart, addCard, deleteCard, updateCard, deleteList }) {
   const [addCardInput, setAddCardInput] = useState('');
@@ -44,3 +45,18 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
     </div>
   );
 }
+
+List.propTypes = {
+  list: PropTypes.shape({
+    id: PropTypes.string,
+    listName: PropTypes.string,
+    cards: PropTypes.arrayOf(PropTypes.shape({})),
+  }).isRequired,
+  onDragOver: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
+  addCard: PropTypes.func.isRequired,
+  deleteCard: PropTypes.func.isRequired,
+  updateCard: PropTypes.func.isRequired,
+  deleteList: PropTypes.func.isRequired,
+};

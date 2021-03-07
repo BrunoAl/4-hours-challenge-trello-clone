@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "kentcdodds",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "rules": {},
+  "plugins": ["react", "jsx-a11y", "prettier"],
+  "env": {
+    "jest": true,
+    "browser": true,
+    "es6": true
+  }
+}
