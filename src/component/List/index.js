@@ -25,6 +25,7 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
       <h3 className="list-title ">{list.listName}</h3>
       {list.cards.map(card => (
         <Card
+          key={card.id}
           card={card}
           list={list}
           onDragStart={onDragStart}

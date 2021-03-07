@@ -125,6 +125,7 @@ export default function Board() {
     <div className="board">
       {boardState.map(list => (
         <List
+          key={list.id}
           list={list}
           onDragStart={onDragStart}
           onDragOver={onDragOver}
