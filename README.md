@@ -23,10 +23,11 @@ https://trusting-minsky-d3ff5e.netlify.app/
 
 ### What would I do if I had more time:
 
-- Keyboard accessibility.
+- Make it accessible via keyboard and screen readers (a11y).
 - Better styling.
-- Mobile version / Responsive
-- Write tests and JSDocs
+- Mobile version / Responsive.
+- Write more unity tests and JSDocs.
+- Write Integration tests using [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 ### Note for the reviewers
 
