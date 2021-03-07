@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Card({ card, list, onDragStart }) {
+export default function Card({ card, list, onDragStart, onDeleteCard }) {
   return (
     <div
       className="card"
@@ -10,7 +10,10 @@ export default function Card({ card, list, onDragStart }) {
       draggable
       onDragStart={e => onDragStart(e)}
     >
-      {card.title}
+      <>
+        {card.title}
+        <button onClick={() => onDeleteCard(card.id)}>delete</button>
+      </>
     </div>
   );
 }

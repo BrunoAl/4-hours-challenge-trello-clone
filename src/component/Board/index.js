@@ -57,6 +57,20 @@ export default function Board() {
     );
   }
 
+  function deleteCard(listId, cardId) {
+    setBoardState(
+      boardState.map(list => {
+        if (list.id === listId) {
+          return {
+            ...list,
+            cards: removeItemById(list.cards, cardId),
+          };
+        }
+        return list;
+      }),
+    );
+  }
+
   return (
     <div className="board">
       {boardState.map(list => (
@@ -66,6 +80,7 @@ export default function Board() {
           onDragOver={e => onDragOver(e)}
           onDrop={e => onDrop(e, list.id)}
           addCard={addCard}
+          deleteCard={deleteCard}
         />
       ))}
     </div>
