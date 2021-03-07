@@ -111,6 +111,10 @@ export default function Board() {
     ]);
   }
 
+  function deleteList(listId) {
+    setBoardState(removeItemById(boardState, listId));
+  }
+
   const onUpdateNewListInput = e => setNewListInput(e.target.value);
 
   return (
@@ -124,6 +128,7 @@ export default function Board() {
           addCard={addCard}
           deleteCard={deleteCard}
           updateCard={updateCard}
+          deleteList={deleteList}
         />
       ))}
       <form onSubmit={addNewList}>

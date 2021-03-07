@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from '../Card';
 import { v4 as uuid } from 'uuid';
 
-export default function List({ list, onDragOver, onDrop, onDragStart, addCard, deleteCard, updateCard }) {
+export default function List({ list, onDragOver, onDrop, onDragStart, addCard, deleteCard, updateCard, deleteList }) {
   const [addCardInput, setAddCardInput] = useState('');
   const updateCardInput = e => setAddCardInput(e.target.value);
 
@@ -36,6 +36,10 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
         <input type="text" value={addCardInput} onChange={updateCardInput} />
         <button type="submit">Add card</button>
       </form>
+
+      <button className="list__delete" onClick={() => deleteList(list.id)}>
+        Delete list
+      </button>
     </div>
   );
 }

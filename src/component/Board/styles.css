@@ -44,3 +44,8 @@
 .list__add-card {
   margin: 2.4rem 0;
 }
+
+.list__delete {
+  background-color: red;
+  margin-bottom: 2.4rem;
+}
