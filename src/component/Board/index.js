@@ -46,7 +46,7 @@ export default function Board() {
 
     setBoardState(
       boardState.map(list => {
-        if (originList.id === destinationList.id) return list; // Tragged to the same list, don't update state.
+        if (originList.id === destinationList.id) return list; // Dragged to the same list, don't update state.
         if (list.id === originList.id) return updateOriginList;
         if (list.id === destinationList.id) return updatedDestinationList;
         return list;
