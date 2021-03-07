@@ -43,6 +43,20 @@ export default function Board() {
     );
   }
 
+  function addCard(listId, newCard) {
+    setBoardState(
+      boardState.map(list => {
+        if (list.id === listId) {
+          return {
+            ...list,
+            cards: [...list.cards, newCard],
+          };
+        }
+        return list;
+      }),
+    );
+  }
+
   return (
     <div className="board">
       {boardState.map(list => (
@@ -51,6 +65,7 @@ export default function Board() {
           onDragStart={e => onDragStart(e)}
           onDragOver={e => onDragOver(e)}
           onDrop={e => onDrop(e, list.id)}
+          addCard={addCard}
         />
       ))}
     </div>
