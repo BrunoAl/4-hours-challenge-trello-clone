@@ -29,11 +29,18 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border: 1px solid white;
   margin: 10px;
-  height: 6rem;
+  height: 10rem;
   display: flex;
   align-items: center;
   padding-left: 1.2rem;
   box-shadow: 1px 3px 18px gray;
+}
+
+.list__add-card {
+  margin: 2.4rem 0;
 }

@@ -22,11 +22,13 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
     >
       <>
         {card.title}
-        <button onClick={() => onDeleteCard(card.id)}>delete</button>
-        <form onSubmit={onSumbitCardUpdate}>
+        <form className="card__update" onSubmit={onSumbitCardUpdate}>
           <input type="text" value={updateCardInput} onChange={onUpdateCardInput} />
           <button type="submit">Update</button>
         </form>
+        <button className="card__delete" onClick={() => onDeleteCard(card.id)}>
+          delete
+        </button>
       </>
     </div>
   );

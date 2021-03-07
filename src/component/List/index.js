@@ -32,7 +32,7 @@ export default function List({ list, onDragOver, onDrop, onDragStart, addCard, d
           onUpdateCard={onUpdateCard}
         />
       ))}
-      <form onSubmit={onAddNewCard}>
+      <form className="list__add-card" onSubmit={onAddNewCard}>
         <input type="text" value={addCardInput} onChange={updateCardInput} />
         <button type="submit">Add card</button>
       </form>
