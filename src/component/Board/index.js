@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { v4 as uuid } from 'uuid';
 import List from '../List';
 import defaultState from '../../defaultState';
 import './styles.css';
-import { removeItemById } from '../../utils/index';
+import {
+  removeItemById,
+  addCardToState,
+  deleteCardFromState,
+  updateCardFromState,
+  addNewListToState,
+} from '../../utils/index';
 
 export default function Board() {
   const [boardState, setBoardState] = useState(
@@ -55,64 +60,19 @@ export default function Board() {
   }
 
   function addCard(listId, newCard) {
-    setBoardState(
-      boardState.map(list => {
-        if (list.id === listId) {
-          return {
-            ...list,
-            cards: [...list.cards, newCard],
-          };
-        }
-        return list;
-      }),
-    );
+    setBoardState(addCardToState(boardState, listId, newCard));
   }
 
   function deleteCard(listId, cardId) {
-    setBoardState(
-      boardState.map(list => {
-        if (list.id === listId) {
-          return {
-            ...list,
-            cards: removeItemById(list.cards, cardId),
-          };
-        }
-        return list;
-      }),
-    );
+    setBoardState(deleteCardFromState(boardState, listId, cardId));
   }
 
   function updateCard(listId, cardId, newTitle) {
-    setBoardState(
-      boardState.map(list => {
-        if (list.id === listId) {
-          return {
-            ...list,
-            cards: list.cards.map(card => {
-              if (card.id === cardId) {
-                return {
-                  ...card,
-                  title: newTitle,
-                };
-              }
-              return card;
-            }),
-          };
-        }
-        return list;
-      }),
-    );
+    setBoardState(updateCardFromState(boardState, listId, cardId, newTitle));
   }
 
   function addNewList() {
-    setBoardState([
-      ...boardState,
-      {
-        listName: newListInput,
-        id: uuid(),
-        cards: [],
-      },
-    ]);
+    setBoardState(addNewListToState(boardState, newListInput));
   }
 
   function deleteList(listId) {
