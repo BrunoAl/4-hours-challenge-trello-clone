@@ -21,6 +21,6 @@
 - Keyboard accessibility.
 - Better styling.
 
-### Note for the reviews
+### Note for the reviewers
 
 - I left code comments to help to review.
