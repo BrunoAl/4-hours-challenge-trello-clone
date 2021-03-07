@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import List from '../List';
 import defaultState from '../../defaultState';
 import './styles.css';
 import { removeItemById } from '../../utils/index';
 
 export default function Board() {
-  const [boardState, setBoardState] = useState(defaultState);
+  const [boardState, setBoardState] = useState(
+    // Lazy initializer
+    () => JSON.parse(window.localStorage.getItem('trellocloneapp')) || defaultState,
+  );
+
+  useEffect(() => window.localStorage.setItem('trellocloneapp', JSON.stringify(boardState)), [boardState]);
 
   function onDragStart(e) {
     e.dataTransfer.setData('draggedCardData', e.currentTarget.id);
