@@ -24,6 +24,7 @@ https://trusting-minsky-d3ff5e.netlify.app/
 
 - Keyboard accessibility.
 - Better styling.
+- Mobile version / Responsive
 
 ### Note for the reviewers
 
