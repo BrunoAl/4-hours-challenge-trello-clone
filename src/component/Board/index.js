@@ -8,12 +8,12 @@ import { removeItemById } from '../../utils/index';
 export default function Board() {
   const [boardState, setBoardState] = useState(
     // Lazy initializer
-    () => JSON.parse(window.localStorage.getItem('trellocloneapp')) || defaultState,
+    () => JSON.parse(window.localStorage.getItem('bruno-trello-clone-app')) || defaultState,
   );
   const [newListInput, setNewListInput] = useState('');
 
   // Presists board state
-  useEffect(() => window.localStorage.setItem('trellocloneapp', JSON.stringify(boardState)), [boardState]);
+  useEffect(() => window.localStorage.setItem('bruno-trello-clone-app', JSON.stringify(boardState)), [boardState]);
 
   // Drag and drop function
   function onDragStart(e) {
