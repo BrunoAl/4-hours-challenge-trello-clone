@@ -15,7 +15,7 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
     <div
       className="card"
       key={card.title}
-      // Workaround, I'll try to find a better approach if I have time left in the end.
+      // Workaround for drag and drop, I'll try to find a better approach if I have time left in the end.
       id={JSON.stringify({ cardId: card.id, listId: list.id })}
       draggable
       onDragStart={e => onDragStart(e)}

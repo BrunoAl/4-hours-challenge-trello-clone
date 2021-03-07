@@ -12,16 +12,20 @@ export default function Board() {
   );
   const [newListInput, setNewListInput] = useState('');
 
+  // Presists board state
   useEffect(() => window.localStorage.setItem('trellocloneapp', JSON.stringify(boardState)), [boardState]);
 
+  // Drag and drop function
   function onDragStart(e) {
     e.dataTransfer.setData('draggedCardData', e.currentTarget.id);
   }
 
+  // Drag and drop function
   function onDragOver(e) {
     e.preventDefault();
   }
 
+  // Drag and drop function
   function onDrop(e, targetList) {
     e.preventDefault();
     const cardInfo = e.dataTransfer.getData('draggedCardData');
@@ -122,8 +126,8 @@ export default function Board() {
       {boardState.map(list => (
         <List
           list={list}
-          onDragStart={e => onDragStart(e)}
-          onDragOver={e => onDragOver(e)}
+          onDragStart={onDragStart}
+          onDragOver={onDragOver}
           onDrop={e => onDrop(e, list.id)}
           addCard={addCard}
           deleteCard={deleteCard}
