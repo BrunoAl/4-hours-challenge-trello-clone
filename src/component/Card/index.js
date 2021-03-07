@@ -1,5 +1,16 @@
 import React from 'react';
 
-export default function Card({ card }) {
-  return <div className="card">{card.title}</div>;
+export default function Card({ card, list, onDragStart }) {
+  return (
+    <div
+      className="card"
+      key={card.title}
+      // Workaround, I'll try to find a better approach if I have time left in the end.
+      id={JSON.stringify({ cardId: card.id, listId: list.id })}
+      draggable
+      onDragStart={e => onDragStart(e)}
+    >
+      {card.title}
+    </div>
+  );
 }
