@@ -6,11 +6,11 @@ describe('util functions', () => {
       removeItemById(
         [
           { title: 'Groceries', id: 'groceries', description: 'bananas, lettuce' },
-          { title: 'Loundry', id: 'loundry', description: 'white clothes' },
+          { title: 'Laundry', id: 'laundry', description: 'white clothes' },
           { title: 'Sleep', id: 'sleep', description: '8 hours' },
         ],
 
-        'loundry',
+        'laundry',
       ),
     ).toEqual([
       { title: 'Groceries', id: 'groceries', description: 'bananas, lettuce' },
