@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { deleteCardFromState, updateCardFromState } from '../../utils/index';
 
-export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCard }) {
+export default function Card({ card, list, setBoardState }) {
   const [updateCardInput, setUpdateCardInput] = useState(card.title);
   const [isEditInputOpen, setisEditInputOpen] = useState(false);
+
+  // Drag and drop function
+  function onDragStart(e) {
+    e.dataTransfer.setData('draggedCardData', {
+      cardId: card.id,
+      listId: list.id,
+    });
+  }
 
   const onUpdateCardInput = e => setUpdateCardInput(e.target.value);
   const onOpenEditCard = () => setisEditInputOpen(true);
   const onCloseEditCard = () => setisEditInputOpen(false);
+
+  const onDeleteCard = cardId => {
+    setBoardState(state => deleteCardFromState(state, list.id, cardId));
+  };
+
+  const onUpdateCard = (cardId, newTitle) => {
+    setBoardState(state => updateCardFromState(state, list.id, cardId, newTitle));
+  };
 
   const onSumbitCardUpdate = e => {
     e.preventDefault();
@@ -16,14 +33,7 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
   };
 
   return (
-    <div
-      className="card"
-      key={card.id}
-      // Workaround for drag and drop, I'll try to find a better approach if I have time left in the end.
-      id={JSON.stringify({ cardId: card.id, listId: list.id })}
-      draggable
-      onDragStart={e => onDragStart(e)}
-    >
+    <div className="card" key={card.id} draggable onDragStart={onDragStart}>
       <>
         <form className="card__update" onSubmit={onSumbitCardUpdate}>
           {isEditInputOpen ? (
@@ -57,7 +67,6 @@ Card.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
-  onDragStart: PropTypes.func.isRequired,
-  onDeleteCard: PropTypes.func.isRequired,
-  onUpdateCard: PropTypes.func.isRequired,
+  /** dispatcher state function */
+  setBoardState: PropTypes.func.isRequired,
 };
