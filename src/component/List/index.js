@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 import Card from '../Card';
-import { removeItemById, addCardToState, updateLists } from '../../utils/index';
+import { addCardToState, updateLists } from './utils';
+import { removeItemById } from '../../utils';
 
 export default function List({ list, setBoardState }) {
   const [addCardInput, setAddCardInput] = useState('');

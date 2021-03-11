@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { deleteCardFromState, updateCardFromState } from '../../utils/index';
+import { deleteCardFromState, updateCardFromState } from './utils';
 
 export default function Card({ card, listId, setBoardState }) {
   const [updateCardInput, setUpdateCardInput] = useState(card.title);

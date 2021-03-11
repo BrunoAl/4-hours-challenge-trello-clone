@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import List from '../List';
 import defaultState from '../../defaultState';
 import './styles.css';
-import { addNewListToState } from '../../utils/index';
+import { addNewListToState } from './utils';
 
 export default function Board() {
   const [boardState, setBoardState] = useState(
