@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { deleteCardFromState, updateCardFromState } from '../../utils/index';
 
-export default function Card({ card, list, setBoardState }) {
+export default function Card({ card, listId, setBoardState }) {
   const [updateCardInput, setUpdateCardInput] = useState(card.title);
   const [isEditInputOpen, setisEditInputOpen] = useState(false);
 
   // Drag and drop function
   function onDragStart(e) {
-    e.dataTransfer.setData('draggedCardData', {
-      cardId: card.id,
-      listId: list.id,
-    });
+    e.dataTransfer.setData(
+      'draggedCardData',
+      JSON.stringify({
+        cardId: card.id,
+        listId,
+      }),
+    );
   }
 
   const onUpdateCardInput = e => setUpdateCardInput(e.target.value);
@@ -19,11 +22,11 @@ export default function Card({ card, list, setBoardState }) {
   const onCloseEditCard = () => setisEditInputOpen(false);
 
   const onDeleteCard = cardId => {
-    setBoardState(state => deleteCardFromState(state, list.id, cardId));
+    setBoardState(state => deleteCardFromState(state, listId, cardId));
   };
 
   const onUpdateCard = (cardId, newTitle) => {
-    setBoardState(state => updateCardFromState(state, list.id, cardId, newTitle));
+    setBoardState(state => updateCardFromState(state, listId, cardId, newTitle));
   };
 
   const onSumbitCardUpdate = e => {
@@ -63,10 +66,7 @@ Card.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
-  list: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-  }).isRequired,
+  listId: PropTypes.string.isRequired,
   /** dispatcher state function */
   setBoardState: PropTypes.func.isRequired,
 };
