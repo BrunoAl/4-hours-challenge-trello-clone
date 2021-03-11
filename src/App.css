@@ -1,3 +1,77 @@
+/* General styling */
 html {
   font-size: 62.5%;
+}
+
+.App {
+  text-align: center;
+}
+
+/* Board styling */
+.board {
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* List styling */
+.list-title {
+  color: #172b4d;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.list {
+  box-shadow: 2px 2px 40px 1px gray;
+  margin-right: 2.4rem;
+  min-width: 27.2rem;
+  font-size: 1.4rem;
+  height: fit-content;
+}
+
+.list:last-child {
+  margin-right: 0;
+}
+
+.list__add-card {
+  margin: 2.4rem 0;
+}
+
+.list__delete {
+  color: white;
+  font-weight: 400;
+  background-color: #e4002b;
+  margin-bottom: 2.4rem;
+}
+
+/* Card styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid white;
+  margin: 10px;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1.2rem;
+  box-shadow: 1px 3px 18px gray;
+  cursor: pointer;
+}
+
+.card__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.card__title-block {
+  display: flex;
+  align-items: center;
+}
+
+.card__edit {
+  height: 2.4rem;
+  margin-left: 1.2rem;
 }
