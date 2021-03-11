@@ -16,7 +16,7 @@ export default function List({ list, setBoardState }) {
   // Drag and drop function
   function onDrop(e, targetList) {
     e.preventDefault();
-    const cardInfo = e.dataTransfer.getData('draggedCardData');
+    const cardInfo = JSON.parse(e.dataTransfer.getData('draggedCardData'));
     setBoardState(state => updateLists(state, cardInfo, targetList));
   }
 
@@ -34,7 +34,7 @@ export default function List({ list, setBoardState }) {
     <div className="list" onDragOver={onDragOver} onDrop={e => onDrop(e, list.id)}>
       <h3 className="list-title ">{list.listName}</h3>
       {list.cards.map(card => (
-        <Card key={card.id} card={card} list={list} setBoardState={setBoardState} />
+        <Card key={card.id} card={card} listId={list.id} setBoardState={setBoardState} />
       ))}
       <form className="list__add-card" onSubmit={onAddNewCard}>
         <input type="text" value={addCardInput} onChange={updateCardInput} />
