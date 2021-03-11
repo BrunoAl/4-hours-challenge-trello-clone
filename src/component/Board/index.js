@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import List from '../List';
 import defaultState from '../../defaultState';
-import './styles.css';
-import { addNewListToState } from '../../utils/index';
+import { addNewListToState } from './utils';
 
 export default function Board() {
   const [boardState, setBoardState] = useState(
@@ -11,14 +10,14 @@ export default function Board() {
   );
   const [newListInput, setNewListInput] = useState('');
 
+  const onUpdateNewListInput = e => setNewListInput(e.target.value);
+
   // Presists board state
   useEffect(() => window.localStorage.setItem('bruno-trello-clone-app', JSON.stringify(boardState)), [boardState]);
 
   function addNewList() {
     setBoardState(state => addNewListToState(state, newListInput));
   }
-
-  const onUpdateNewListInput = e => setNewListInput(e.target.value);
 
   return (
     <div className="board">
