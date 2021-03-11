@@ -41,12 +41,12 @@ export default function Card({ card, listId, setBoardState }) {
         <form className="card__update" onSubmit={onSumbitCardUpdate}>
           {isEditInputOpen ? (
             <>
-              <input type="text" value={updateCardInput} onChange={onUpdateCardInput} />
+              <input aria-label="Update card" type="text" value={updateCardInput} onChange={onUpdateCardInput} />
               <button type="submit">Save</button>
             </>
           ) : (
             <div className="card__title-block">
-              <h4 className="card__title">{card.title}</h4>
+              <h3 className="card__title">{card.title}</h3>
               <button className="card__edit" onClick={onOpenEditCard}>
                 Edit
               </button>
