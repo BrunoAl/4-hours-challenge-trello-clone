@@ -22,7 +22,7 @@ export default function Card({ card, list, onDragStart, onDeleteCard, onUpdateCa
       // Workaround for drag and drop, I'll try to find a better approach if I have time left in the end.
       id={JSON.stringify({ cardId: card.id, listId: list.id })}
       draggable
-      onDragStart={e => onDragStart(e)}
+      onDragStart={onDragStart}
     >
       <>
         <form className="card__update" onSubmit={onSumbitCardUpdate}>
