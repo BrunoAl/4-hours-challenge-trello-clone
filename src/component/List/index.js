@@ -33,12 +33,12 @@ export default function List({ list, setBoardState }) {
 
   return (
     <div className="list" onDragOver={onDragOver} onDrop={e => onDrop(e, list.id)}>
-      <h3 className="list-title ">{list.listName}</h3>
+      <h2 className="list-title ">{list.listName}</h2>
       {list.cards.map(card => (
         <Card key={card.id} card={card} listId={list.id} setBoardState={setBoardState} />
       ))}
       <form className="list__add-card" onSubmit={onAddNewCard}>
-        <input type="text" value={addCardInput} onChange={updateCardInput} />
+        <input aria-label="add new card" type="text" value={addCardInput} onChange={updateCardInput} />
         <button type="submit">Add card</button>
       </form>
 

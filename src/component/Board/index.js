@@ -25,7 +25,7 @@ export default function Board() {
         <List key={list.id} list={list} setBoardState={setBoardState} />
       ))}
       <form onSubmit={addNewList}>
-        <input type="text" value={newListInput} onChange={onUpdateNewListInput} />
+        <input type="text" aria-label="add new card" value={newListInput} onChange={onUpdateNewListInput} />
         <button type="submit">Add list</button>
       </form>
     </div>
