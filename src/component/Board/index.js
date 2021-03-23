@@ -12,10 +12,11 @@ export default function Board() {
 
   const onUpdateNewListInput = e => setNewListInput(e.target.value);
 
-  // Presists board state
+  // Persists board state
   useEffect(() => window.localStorage.setItem('bruno-trello-clone-app', JSON.stringify(boardState)), [boardState]);
 
-  function addNewList() {
+  function addNewList(e) {
+    e.preventDefault();
     setBoardState(state => addNewListToState(state, newListInput));
   }
 
